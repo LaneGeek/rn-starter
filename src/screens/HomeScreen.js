@@ -19,6 +19,11 @@ const HomeScreen = ({navigation}) => {
                 color={'green'}
                 onPress={() => navigation.navigate('Image')}
             />
+            <Button
+                title='Go To Counter Demo!'
+                color={'black'}
+                onPress={() => navigation.navigate('Counter')}
+            />
         </View>
     );
 };

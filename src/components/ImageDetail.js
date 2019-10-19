@@ -1,8 +1,14 @@
 import React from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View, Image} from 'react-native';
 
-const ImageDetail = (props) => {
-    return <Text>Show image of {props.title}</Text>;
+const ImageDetail = props => {
+    return (
+        <View>
+            <Image source={props.imageSource}/>
+            <Text>{props.title}</Text>
+            <Text>Image score - {props.score}</Text>
+        </View>
+    );
 };
 
 const styles = StyleSheet.create({});
