@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Button, FlatList} from 'react-native';
+import {StyleSheet, View, Button, FlatList, ToastAndroid, Platform} from 'react-native';
 
 const ColorScreen = () => {
     const [colors, setColors] = useState([]);
@@ -8,12 +8,16 @@ const ColorScreen = () => {
         <View>
             <Button
                 title='Add a Color'
-                onPress={() => setColors([...colors, randomRgb()])}
+                onPress={() => {
+                    setColors([...colors, randomRgb()]);
+                    if (Platform.OS !== 'ios')
+                        ToastAndroid.show(colors[colors.length - 1], ToastAndroid.SHORT);
+                }}
             />
             <FlatList
                 keyExtractor={item => item}
                 data={colors}
-                renderItem={({item}) => <View style={{ height: 100, width: 100, backgroundColor: item }}/>}
+                renderItem={({ item }) => <View style={{ height: 100, width: 100, backgroundColor: item }}/>}
             />
         </View>
     );

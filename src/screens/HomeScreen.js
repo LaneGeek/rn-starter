@@ -1,10 +1,13 @@
 import React from 'react';
-import {Text, StyleSheet, View, Button, TouchableOpacity} from 'react-native';
+import {Text, StyleSheet, View, Button, Platform, Dimensions} from 'react-native';
 
 const HomeScreen = ({navigation}) => {
+    const tablet = Dimensions.get('window').width > 600;
+    const device = Platform.OS === 'android' ? (tablet ? 'Android tablet' : 'Android phone') : (tablet ? 'iPad' : 'iPhone');
+
     return (
         <View>
-            <Text style={styles.text}>Hello and welcome to my underground lair!!!</Text>
+            <Text style={styles.text}>Hello and welcome! Enjoy this crappy app on your crappy, old, pitiful {device}!</Text>
             <Button
                 title='Go To Components Demo'
                 onPress={() => navigation.navigate('Components')}
@@ -33,6 +36,11 @@ const HomeScreen = ({navigation}) => {
                 title='Go To Square Demo!'
                 color={'brown'}
                 onPress={() => navigation.navigate('Square')}
+            />
+            <Button
+                title='Get Info About Your Crappy Device 😞'
+                color={'blue'}
+                onPress={() => navigation.navigate('DeviceInfo')}
             />
         </View>
     );
