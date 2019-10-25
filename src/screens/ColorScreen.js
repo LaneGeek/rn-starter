@@ -9,9 +9,10 @@ const ColorScreen = () => {
             <Button
                 title='Add a Color'
                 onPress={() => {
-                    setColors([...colors, randomRgb()]);
+                    const newColor = randomRgb();
+                    setColors([...colors, newColor]);
                     if (Platform.OS !== 'ios')
-                        ToastAndroid.show(colors[colors.length - 1], ToastAndroid.SHORT);
+                        ToastAndroid.show(newColor, ToastAndroid.SHORT);
                 }}
             />
             <FlatList
